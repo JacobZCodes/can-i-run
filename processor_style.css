@@ -1,0 +1,70 @@
+@font-face {
+    font-family: rapidfinger101;
+    src: url("RapidFinger101-W9RV.ttf")
+}
+/* Source: https://www.fonts101.com/fonts/view/Fancy/73620/Rapid_Finger_101 */
+
+html {
+    background-color: blanchedalmond;
+}
+h1 {
+    font-size: 3em;
+}
+h1, h2 {    
+    font-family: rapidfinger101;    
+    color: black;
+    text-shadow: 2px 2px 3px rgb(69, 61, 61);
+    letter-spacing: .25em;
+    text-align: center;
+}
+ul {
+    list-style: none;
+}
+
+.spec-selections {
+    display: inline-flex;
+    position: relative;
+    left: 250px;
+    bottom: 33px;
+    height: 450px;
+}
+
+.submit-container {
+    display: inline-flex;
+    position: absolute;
+    top: 75px;
+    left: 395px;
+    font-size: 1em;
+}
+
+label {
+    display: inline-block;
+    font-stretch: expanded;
+    font-size: 1.5em;
+    font-family: rapidfinger101;
+    text-shadow: 2px 2px 3px rgb(69, 61, 61);
+    letter-spacing: .25em;
+}
+
+input[list] {
+    display: block;
+    background-color: silver;
+    height: 30px;
+}
+
+input[text] {
+    display: block;
+    background-color: silver;
+    height: 50px;
+}
+
+input[type=submit] {
+    background-color: black;
+    color: blanchedalmond;
+    font-family: rapidfinger101;
+    text-shadow: 2px 2px 3px rgb(69, 61, 61);
+    letter-spacing: .25em;
+    margin-top: 10px;
+    font-size: 2em;
+    height: 100px;
+}

@@ -1,0 +1,21 @@
+To create a project site on GitHub Pages with a custom domain, you need to follow these steps:
+
+(1)Create a new repository on GitHub for your project and name it as you wish.
+
+(2)Create a new branch called gh-pages in your repository.
+
+(3)Upload your website files to the gh-pages branch. 
+Make sure you include an index.html file, as this is the default file that GitHub Pages will look for.
+
+(4)Set up your custom domain name in your repository settings. 
+Go to your repository's settings page, scroll down to the GitHub Pages section, and enter your 
+custom domain name in the "Custom domain" field.
+
+(5)Go to your domain registrar's website and create a CNAME record 
+that points to your GitHub Pages subdomain. The subdomain should be in the format 
+username.github.io/projectname, where "username" is your GitHub username and "projectname" 
+is the name of your repository.
+
+(6)Wait for the DNS changes to propagate. This can take up to 24-48 hours.
+
+Once the DNS changes have propagated, your project site should be accessible at your custom domain name. Note that it may take some time for the changes to take effect, so be patient. Also, make sure to check the GitHub Pages section in your repository settings to ensure that everything is set up correctly.

@@ -1,0 +1,55 @@
+@font-face {
+    font-family: rapidfinger101;
+    src: url("RapidFinger101-W9RV.ttf")
+}
+/* Source: https://www.fonts101.com/fonts/view/Fancy/73620/Rapid_Finger_101 */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background-color: blanchedalmond;
+    position: relative;
+    margin: 0px;
+}
+
+h1 {
+    font-size: 3em;
+    margin-block-start: 0em;
+}
+
+h1 {    
+    font-family: rapidfinger101;    
+    color: black;
+    text-shadow: 2px 2px 3px rgb(69, 61, 61);
+    letter-spacing: .25em;
+    text-align: center;
+}
+
+h2 {    
+    font-family: rapidfinger101;    
+    color: black;
+    text-shadow: 2px 2px 3px rgb(69, 61, 61);
+    letter-spacing: .125em;
+    text-align: justify;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+span {
+    color: green;
+}
+
+.game {
+    color: teal;
+}
+
+
+
+
+
+
