@@ -2,6 +2,7 @@ from bottle import route, run, template, get, post, request, static_file, error,
 import os
 import requests
 import utils
+# https://damp-retreat-58247.herokuapp.com/
 # ONLY WORKS WITH INTEL CORE - INTEL CORE CHIPS + DOES NOT SUPPORT GRAPHICS COMPARISON YET
 app = Bottle()
 @app.route('/', method=['GET'])
