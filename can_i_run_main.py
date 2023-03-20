@@ -170,9 +170,9 @@ def sku_explain():
     elif 'Brand Modifier' in processor_specs_result_dict['Success'].keys() and 'Generation' in processor_specs_result_dict['Success'].keys() and len(processor_specs_result_dict['Success'].keys()) == 2:
         return template("conditional_sku_success.tpl", processor_specs_result_dict=processor_specs_result_dict, game=game)
 
-@app.route('/static/<filepath:path>')
-def server_static(filepath):
-    return static_file(filepath, root='C:/Users/Jacob/Desktop/CanIRun_FrontEnd')
+@app.route('/static/<filename>')
+def server_static(filename):
+    return static_file(filename, root='./static')
 
 @app.route('/corecount', method=['POST'])
 def core_count():

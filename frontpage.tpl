@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>CanIRun!</title>
-        <link href="/static/C:/Users/Jacob/Desktop/CanIRun_FrontEnd/frontpage_style.css" type="text/css" rel="stylesheet">    </head>
+        <link href="./static/frontpage_style.css" type="text/css" rel="stylesheet">    </head>
     </head>
     <body>
         <h1>CAN I RUN?</h1>
