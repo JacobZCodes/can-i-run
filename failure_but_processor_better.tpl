@@ -5,6 +5,13 @@ OLD GAME - PROCESSOR SUCCEEDED, GENERAL SPECS FAILED
         <meta charset="utf-8">
         <title>CanIRun!</title>
         <link href="/static/C:/Users/Jacob/Desktop/CanIRun_FrontEnd/fail_style.css" type="text/css" rel="stylesheet"> 
+        <style>
+            @font-face {
+            font-family: rapidfinger101;
+            src: url("./static/RapidFinger101-W9RV.ttf")
+            }
+        </style>   
+
     </head>
     <body>
         <!--<img src="/static/C:/Users/Jacob/Desktop/CanIRun_FrontEnd/{{game}}.jpg">-->

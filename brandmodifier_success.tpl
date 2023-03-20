@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <title>CanIRun!</title>
         <link href="/static/C:/Users/Jacob/Desktop/CanIRun_FrontEnd/brandmodifier_success_style.css" type="text/css" rel="stylesheet">
+        <style>
+            @font-face {
+            font-family: rapidfinger101;
+            src: url("./static/RapidFinger101-W9RV.ttf")
+            }
+        </style>   
     </head>
     <body>
         <h1>BRAND MODIFIER - SUCCESS!</h1>
