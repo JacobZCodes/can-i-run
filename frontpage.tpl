@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>CanIRun!</title>
+<<<<<<< HEAD
         <link href="./static/frontpage_style.css" type="text/css" rel="stylesheet"> 
         <style>
             @font-face {
@@ -10,6 +11,9 @@
             src: url("./static/RapidFinger101-W9RV.ttf")
             }
         </style>   
+=======
+        <link href="./static/frontpage_style.css" type="text/css" rel="stylesheet">    </head>
+>>>>>>> c8df6faa19f463bf0f3fd57185dfd984c7583055
     </head>
     <body>
         <h1>CAN I RUN?</h1>
