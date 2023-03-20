@@ -4,6 +4,7 @@ import requests
 import utils
 # https://damp-retreat-58247.herokuapp.com/
 # ONLY WORKS WITH INTEL CORE - INTEL CORE CHIPS + DOES NOT SUPPORT GRAPHICS COMPARISON YET
+# testing git diff
 app = Bottle()
 @app.route('/', method=['GET'])
 def frontpage():
