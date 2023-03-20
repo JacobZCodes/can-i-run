@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8">
         <title>CanIRun!</title>
-        <link href="/static/C:/Users/Jacob/Desktop/CanIRun_FrontEnd/clock_speed_success_style.css" type="text/css" rel="stylesheet">
+        <link href="./static/clock_speed_success_style.css" type="text/css" rel="stylesheet">
         <style>
             @font-face {
             font-family: rapidfinger101;
