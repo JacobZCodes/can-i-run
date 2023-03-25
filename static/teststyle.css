@@ -1,0 +1,15 @@
+/* Font Source: https://www.fonts101.com/fonts/view/Fancy/73620/Rapid_Finger_101 */
+
+html {
+    background-color: blanchedalmond;
+    letter-spacing: .25em;
+}
+h1 {
+    font-size: 3em;
+}
+h1, h2 {    
+    font-family: rapidfinger101;    
+    color: black;
+    text-shadow: 2px 2px 3px rgb(69, 61, 61);
+    text-align: center;
+}

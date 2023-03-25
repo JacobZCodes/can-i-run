@@ -1,0 +1,1 @@
+web: python can_i_run_main.py

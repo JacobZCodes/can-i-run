@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CanIRun!</title>
+        <link href="C:\Users\Jacob\Desktop\CanIRun_FrontEnd\teststyle.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>CAN I RUN?</h1>
+        <h2>Learn a little bit about your computer's hardware while also
+            seeing if your Windows PC can run any game on Steam.
+        </h2>
+        
+        <div class="spec_selections">
+        <ul>
+            <form action="/intel" method="post">
+                <li><b>OS:</b><input list="OS" name="user_os"></li>
+                <li><b>Memory:</b><input list="Memory" name="user_memory"></li>
+                <li><b>DirectX:</b><input list="DirectX" name="user_directx"></li>
+                <li><b>Storage:</b><input list="Storage" name="user_storage"></li>
+        </ul>
+        </div>
+        <div class="options"> 
+            <datalist id="OS">
+                <option value="Windows 11">
+                <option value="Windows 10">
+                <option value="Windows 7">
+            </datalist>
+        
+            <datalist id="Memory">
+                <option value="1">
+                <option value="8">
+                <option value="16">
+            </datalist>
+        
+            <datalist id="DirectX">
+                <option value="4">
+                <option value="7">
+                <option value="12">
+            </datalist>
+        
+            <datalist id="Storage">
+                <option value="100">
+                <option value="20">
+                <option value="300">
+                <option value="400">
+            </datalist>
+        </div>
+        <input type='submit' value="CLICKME!">
+            </form>
+    </body>
+    
+</html>

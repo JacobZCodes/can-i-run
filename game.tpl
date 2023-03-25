@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CanIRun!</title>
+        <link href="./static/game_style.css" type="text/css" rel="stylesheet"> 
+        <style>
+            @font-face {
+            font-family: rapidfinger101;
+            src: url("./static/RapidFinger101-W9RV.ttf")
+            }
+        </style>   
+
+    </head>
+    <body>
+        <h1>THE GAME</h1>
+        <h2>This is the fun part. Hopefully by this point you've learned a little more about your hardware
+            and how your computer operates. Go ahead and enter the name of the Steam game that you want to play,
+            and we'll let you know if your computer can run it.
+        </h2>
+
+        <form action="/result" method="post">
+            <div class="container">
+                <input placeholder="ENTER NAME OF GAME HERE" spellcheck="true" name="game">
+                <input type="submit" value="CAN I RUN? (CLICK ME!)">
+            </div>
+        </form>
+
+    </body>
+</html>
+        
+        
