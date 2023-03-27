@@ -20,16 +20,16 @@
                 <ul>
                     <form action="/processor" method="post">
                             <li>
-                                <label title="Operating System. Open your DirectX Diagnostic Tool by pressing the Windows key and entering 'dxdiag'. There you will be able to see information about your current OS, Memory, and DirectX." for = "OS"><b>OS</b></label><input list="OS" name="OS">
+                                <label title="Operating System. Open your DirectX Diagnostic Tool by pressing the Windows key and entering 'dxdiag'. There you will be able to see information about your current OS, Memory, and DirectX." for = "OS"><b>&#9432;OS</b></label><input list="OS" name="OS">
                             </li>
                             <li>
-                                <label title="See 'OS'. Your diagnostic tool will display your Memory in MB, but you need to convert it to GB here." for = "Memory"><b>Memory</b></label><input list="Memory" name="Memory">
+                                <label title="See 'OS'. Your diagnostic tool will display your Memory in MB, but you need to convert it to GB here." for = "Memory"><b>&#9432;Memory</b></label><input list="Memory" name="Memory">
                             </li> 
                             <li>
-                                <label title = "See 'OS'. You just need to input the integer version number here." for = "DirectX"><b>DirectX</b></label><input list="DirectX" name="DirectX">
+                                <label title = "See 'OS'. You just need to input the integer version number here." for = "DirectX"><b>&#9432;DirectX</b></label><input list="DirectX" name="DirectX">
                             </li>
                             <li>
-                                <label title="Press the Windows key and enter 'File Explorer'. Select 'This PC' on the left-hand side and look beneath the line labeled 'Devices and drives'. There you should see X GB free of Y GB; X is the amount of storage space you have available." for = "Storage"><b>Storage</b></label><input list="Storage" name="Storage">
+                                <label title="Press the Windows key and enter 'File Explorer'. Select 'This PC' on the left-hand side and look beneath the line labeled 'Devices and drives'. There you should see X GB free of Y GB; X is the amount of storage space you have available." for = "Storage"><b>&#9432;Storage</b></label><input list="Storage" name="Storage">
                             </li>
                             <div class="submit-container">
                                 <input type="submit" value="SUBMIT MY SPECS">

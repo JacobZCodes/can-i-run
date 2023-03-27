@@ -23,25 +23,25 @@
                     <form action="/game" method="post">
                         <li>
                             <label title = "Pull up your DirectX Diagnostic Tool again and look for the 'Processor' label. Your Processor's brand modifier is 'iX'." for = "user_brand_modifier"> 
-                            Brand Modifier
+                                &#9432;Brand Modifier
                             </label>
                             <input list = "brand_modifier" name = "Brand Modifier" id = "Brand Modifier">
                         </li>
                         <li>
                             <label title = "There will be a series of digits after the brand modifier (the iX you just selected). Your processor's generation number will either be the first one or two digits. The highest generation an Intel processor can go up to at the moment is 13." for = "Generation"> 
-                                Generation Number
+                            &#9432;Generation Number
                             </label>
                             <input list = "generation" name = "Generation" id = "Generation">
                         </li> 
                         <li>
                             <label title = "All the digits following the generation number (if you encounter any letters, ignore those). SKU numbers are not unique to computing; SKU stands for Stock Keeping Unit and helps businesses keep track of how much of something they have in order to manage their inventory. Since Intel will be constantly developing and updating a multitude of different processors within each of its different brands and generations, these updated processors are demarcated by their SKU numbers. Newer processors will thus have higher SKU numbers." for = "SKU"> 
-                                SKU Digits
+                                &#9432;SKU Digits
                             </label>
                             <input text = "sku_nums" name = "SKU" id = "SKU">
                         </li>
                         <li>
                             <label title = "Optional. Some Intel processor's will include special properties with some of their processors, such as the ability for it to be easily overclocked." for = "Suffix"> 
-                                Suffix
+                                &#9432;Suffix
                             </label>
                             <input list = "suffix" name = "Suffix" id = "Suffix">
                         </li>
