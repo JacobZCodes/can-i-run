@@ -7,9 +7,8 @@ other_split_os[1] = other_split_os[1].strip()
 version_windows = int(split_os[1].split(" ")[0])
 other_version_windows = int(other_split_os[1].split(" ")[0])
 if version_windows >= other_version_windows:
-    print('OS passed check...')
+    pass
 else:
-    print('OS failed check...')
     fail_count += 1
 
 """COMPARE PROCESSOR"""
@@ -35,11 +34,9 @@ for char in my_shit[1]:
                 pass
         except ValueError:
                 gen_and_sku = my_shit[1].split(char)
-                print(gen_and_sku)
                 counter = True
                 break
 
-# print('There')
 other_counter = False
 for char in other_shit[1]:
     if other_counter == True:
@@ -64,29 +61,23 @@ elif int(gen_and_sku[0][:2]) > 13:
 
 
 if int(other_gen_and_sku[0][:2]) <= 13:
-    print('Executing...')
     other_gen_num = int(other_gen_and_sku[0][:2])
 elif int(other_gen_and_sku[0][:2]) > 13:
-    print('Also executing...')
     other_gen_num = int(other_gen_and_sku[0][0])
 
 if brand_modifier >= other_brand_modifier and gen_num >= other_gen_num:
-    print('Processor passed check...')
+    pass
 else:
-    print('Processor failed check...')
     fail_count += 1
 
-# print(brand_modifier, gen_num)
-# print(other_brand_modifier,other_gen_num)
 
 
 
 """COMPARE RAM"""
 other_ram= int(min_reqs['Memory'].split(" ")[0])
 if {{memory}} >= other_ram:
-    print('RAM passed check...')
+    pass
 else:
-    print('RAM failed check...')
     fail_count += 1
 
 """COMPARE GRAPHICS"""
@@ -96,7 +87,6 @@ else:
 # Compare rank
 other_num_after_gtx = min_reqs['Graphics'].split('GTX')[1].strip().split()[0]
 other_look_me_up = 'GTX' + " " + other_num_after_gtx
-print(other_look_me_up)
 my_brand = {{graphics}}.split()
 for position, element in enumerate(my_brand):
     my_brand[position] = element.strip('(R)')
@@ -109,19 +99,16 @@ with open('GPU_UserBenchmarks.csv') as my_csv:
         if other_look_me_up in dictionary['Model']:
             other_rank = dictionary['Rank']
             other_benchmark = dictionary['Benchmark']
-            print(other_rank,other_benchmark)
             break
     for dictionary in my_csv_object:
         if my_brand in dictionary['Model']:
             my_rank = dictionary['Rank']
             my_benchmark = dictionary['Benchmark']
-            print(my_rank,my_benchmark)
             break
 
 if my_rank <= other_rank and my_benchmark >= other_benchmark:
-    print('Graphics passed check...')
+    pass
 else:
-    print('Graphics failed check...')
     fail_count += 1
 
 
@@ -130,16 +117,14 @@ else:
 """COMPARE DIRECTX"""
 min_reqs['DirectX'] = int(min_reqs['DirectX'].split(" ")[1])
 if {{directx}} >= min_reqs['DirectX']:
-    print('DirectX passed check...')
+    pass
 else:
-    print('DirectX failed check...')
     fail_count += 1
 
 # Compare Storage
 min_reqs['Storage'] = int(min_reqs['Storage'].split()[0])
 if {{storage}} >= min_reqs['Storage']:
-    print('Storage passed check...')
+    pass
 else:
-    print('Storage failed check...')
     fail_count += 1
 

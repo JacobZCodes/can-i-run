@@ -1,3 +1,6 @@
 How to observe traffic
-(i) instead of hovering
 Autocomplete for games
+Secure connection
+https://stackoverflow.com/questions/2671454/heroku-how-to-see-all-the-logs * great resource
+for comparison purposes, how to use my computer as a server (to demonstrate neccessity and importance
+of hosting)

@@ -161,7 +161,6 @@ def return_game_specs(library, game):
         spec = tag.contents[0].text + tag.contents[1].text
         split_spec = spec.split(':')
         min_reqs[split_spec[0].strip()] = split_spec[1].strip()
-    print(min_reqs)
     if 'Storage' not in min_reqs.keys():
         # Some older games have 'Storage' data under 'Hard Disk Space' instead. 
         min_reqs['Storage'] = min_reqs['Hard Disk Space']
@@ -225,7 +224,6 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
     whose values are a success and fail dictionary showing where the user succeeded or failed a check.
     Params Dict -> User Specs Dictionary
     Dict -> Game Specs Dictionary"""
-    print(user_spec_dictionary)
     result_dict = {}
     fail_dict = {}
     success_dict = {}
@@ -241,44 +239,25 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
     game_os = os_pattern.search(game_spec_dictionary['OS'])
     game_os = int(game_os.group())
     if user_os >= game_os:
-        print("User passed OS...")
-        print(user_os)
-        print(game_os)
         success_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS']}
     else:
-        print("User failed OS...")
-        print(user_os)
-        print(game_os)
         fail_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS']}
 
     
     user_memory = int(re.sub('\D','', user_spec_dictionary['Memory']))
     game_memory = int(re.sub('\D','', game_spec_dictionary['Memory']))
     if user_memory >= game_memory:
-        print("User passed RAM...")
-        print(user_memory)
-        print(game_memory)
         success_dict['Memory']={'User': user_spec_dictionary['Memory'], 'Game': game_spec_dictionary['Memory']}
     else:
-        print("User failed RAM...")
-        print(user_memory)
-        print(game_memory)
         fail_dict['Memory']={'User': user_spec_dictionary['Memory'], 'Game': game_spec_dictionary['Memory']}
 
     user_storage = int(re.sub('\D','', user_spec_dictionary['Storage']))
     game_storage = int(re.sub('\D','', game_spec_dictionary['Storage']))
-    print(game_storage)
     if user_storage >= game_storage:
-        print("User passed storage...")
-        print(user_storage)
-        print(game_storage)
         success_dict['Storage']={'User': user_spec_dictionary['Storage'], 'Game': game_spec_dictionary['Storage']}
 
         
     else:
-        print("User failed storage...")
-        print(user_storage)
-        print(game_storage)
         fail_dict['Storage']={'User': user_spec_dictionary['Storage'], 'Game': game_spec_dictionary['Storage']}
 
     user_directx = int(re.sub('\D','', user_spec_dictionary['DirectX']))
@@ -296,15 +275,9 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
         success_dict['DirectX']={'User': user_spec_dictionary['DirectX'], 'Game': 'not given'}
 
     elif user_directx >= game_directx:
-        print("User passed DirectX...")
-        print(user_directx)
-        print(game_directx)
         success_dict['DirectX']={'User': user_spec_dictionary['DirectX'], 'Game': game_spec_dictionary['DirectX']}
 
     else:
-        print("User failed DirectX...")
-        print(user_directx)
-        print(game_directx)
         fail_dict['DirectX']={'User': user_spec_dictionary['DirectX'], 'Game': game_spec_dictionary['DirectX']}
 
     result_dict = {'Fail': fail_dict, 'Success': success_dict}
@@ -361,7 +334,6 @@ def compare_processor_specs(find_clock_speed_plus_core_count,user_processor_spec
     success_dict = {}
     result_dict = {}
     if len(game_processor_spec_dictionary.keys()) < 3:
-        print("Working properly...")
         # Check here if we are dealing with an older or lightweight game
         # For now, just assume that user passes here, but in future we need to find clock speed and core count
         # for the user's processor
@@ -370,18 +342,14 @@ def compare_processor_specs(find_clock_speed_plus_core_count,user_processor_spec
         # we want to dig deeper and look at its core count + clock speed
         if new_user_processor_spec_dictionary['Clock Speed'] >= game_processor_spec_dictionary['Clock Speed'] and new_user_processor_spec_dictionary['Core Count'] >= game_processor_spec_dictionary['Core Count']:
             result_dict[1] = {'User': {'Clock Speed': new_user_processor_spec_dictionary['Clock Speed'], 'Core Count': new_user_processor_spec_dictionary['Core Count']}, 'Game': {'Clock Speed': game_processor_spec_dictionary['Clock Speed'],'Core Count': game_processor_spec_dictionary['Core Count']}}
-            print("DIE OLD GAME!")
             return result_dict
         else:
             # Not neccesarily a complete failure...
             result_dict[0] = {'User': {'Clock Speed': new_user_processor_spec_dictionary['Clock Speed'], 'Core Count': new_user_processor_spec_dictionary['Core Count']}, 'Game': {'Clock Speed': game_processor_spec_dictionary['Clock Speed'], 'Core Count': game_processor_spec_dictionary['Core Count']}}
-            print("NAY HAVE MERCY!")
             return result_dict
 
     # Right now my program only knows how to work with Intel Core processors. We're just going to compare Brand
     # Modifier, Generation, and SKU. One and done.
-    print(user_processor_spec_dictionary)
-    print(game_processor_spec_dictionary)
     if int(re.search("\d", user_processor_spec_dictionary['Brand Modifier']).group()) > int(re.search("\d", game_processor_spec_dictionary['Brand Modifier']).group()):
         success_dict['Brand Modifier']={'User': user_processor_spec_dictionary['Brand Modifier'], 'Game': game_processor_spec_dictionary['Brand Modifier']}
         info_dict['Generation']={'User': user_processor_spec_dictionary['Generation'], 'Game': game_processor_spec_dictionary['Generation']}

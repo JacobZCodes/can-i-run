@@ -86,7 +86,3 @@ def return_game_specs(library, game):
     return min_reqs
 
 
-
-if __name__ == '__main__':
-    print(return_game_specs(create_dictionary_library(),"For Honor"))
-
