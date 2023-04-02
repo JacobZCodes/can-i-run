@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>CanIRun!</title>
         <link href="./static/game_style.css" type="text/css" rel="stylesheet"> 
+        <link href="./static/favicon-16x16.png" rel="icon">
+
         <style>
             @font-face {
             font-family: rapidfinger101;
