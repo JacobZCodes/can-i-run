@@ -1,4 +1,4 @@
-from bottle import route, run, template, get, post, request, static_file, error, response, redirect, error, Bottle
+from bottle import route, run, template, get, post, request, static_file, error, response, redirect, error, abort, Bottle
 import os
 import requests
 import utils
@@ -32,7 +32,7 @@ def game():
     return template('game.tpl')
 
 @app.route('/result', method=['POST'])
-def result(utils_find_clock_speed_plus_core_count=utils.find_clock_speed_plus_core_count,utils_find_app_id=utils.find_app_id,utils_pull_game_image=utils.pull_game_image,utils_compare_processor_specs=utils.compare_processor_specs,utils_return_processor_specs=utils.return_processor_specs,utils_compare_specs=utils.compare_specs,utils_return_game_specs=utils.return_game_specs,utils_create_dictionary_library=utils.create_dictionary_library):
+def result(utils_find_clock_speed_plus_core_count=utils.find_clock_speed_plus_core_count,utils_find_app_id=utils.find_app_id,utils_compare_processor_specs=utils.compare_processor_specs,utils_return_processor_specs=utils.return_processor_specs,utils_compare_specs=utils.compare_specs,utils_return_game_specs=utils.return_game_specs,utils_create_dictionary_library=utils.create_dictionary_library):
     # Two different possible routes here, depends on whether 
     # user can run game or not
     # debug this shit
@@ -40,7 +40,10 @@ def result(utils_find_clock_speed_plus_core_count=utils.find_clock_speed_plus_co
     global specs_result_dict
     global processor_specs_result_dict
     game_id = utils_find_app_id(utils_create_dictionary_library(),request.forms.get('game'))
-    specs_result_dict = utils_compare_specs(specs_form_data,utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game')))
+    try:
+        specs_result_dict = utils_compare_specs(specs_form_data,utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game')))
+    except:
+        abort(400)
     game_spec_dictionary = utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game'))
     processor_specs_result_dict = utils_compare_processor_specs(utils_find_clock_speed_plus_core_count,processor_form_data,utils_return_processor_specs(game_spec_dictionary['Processor']))
     global game
@@ -191,6 +194,9 @@ def clock_speed():
 def error_500(error):
     return template("error500.tpl")
 
+@app.error(400)
+def error_400(error):
+    return template("errorgamenotfound.tpl")
 if os.environ.get('APP_LOCATION') == 'heroku':
     run(app,host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 else:
