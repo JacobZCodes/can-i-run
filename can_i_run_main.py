@@ -9,6 +9,7 @@ import utils
 app = Bottle()
 @app.route('/', method=['GET'])
 def frontpage():
+    send_text()
     return template('frontpage.tpl')    
 
 @app.route('/processor', method=['POST'])
