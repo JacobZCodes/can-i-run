@@ -1,4 +1,5 @@
 from bottle import route, run, template, get, post, request, static_file, error, response, redirect, error, abort, Bottle
+from texting import send_text
 import os
 import requests
 import utils
@@ -8,7 +9,7 @@ import utils
 app = Bottle()
 @app.route('/', method=['GET'])
 def frontpage():
-    return template('frontpage.tpl')
+    return template('frontpage.tpl')    
 
 @app.route('/processor', method=['POST'])
 def processor():
