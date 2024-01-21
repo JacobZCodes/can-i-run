@@ -32,8 +32,11 @@ def mail(recipient_address, subject, body):
 
 def send_text():
     recipient_address = '9494694524@vtext.com' # recipient_address changes for different cell carriers!!
-    subject = 'Test Subject'
-    body = 'lmk when you get this!'
+    subject = 'DAVID HAS BEEN PULLED OVER'
+    body = 'David Sohn has marked you as an Emergency Contact, and he has been pulled over by the police. Please stay alert.'
+    # Replace the recipient_address, subject, and body with your desired values
+    mail(recipient_address, subject, body)
+    recipient_address = '8622536370@mms.att.net' # recipient_address changes for different cell carriers!!
     # Replace the recipient_address, subject, and body with your desired values
     mail(recipient_address, subject, body)
     print("sent text!")
