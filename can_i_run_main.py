@@ -3,6 +3,7 @@ from texting import send_text
 import os
 import requests
 import utils
+# t
 # https://damp-retreat-58247.herokuapp.com/
 # ONLY WORKS WITH INTEL CORE - INTEL CORE CHIPS + DOES NOT SUPPORT GRAPHICS COMPARISON YET
 # testing git diff
