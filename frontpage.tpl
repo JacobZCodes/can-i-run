@@ -13,7 +13,7 @@
         </style>   
     </head>
     <body>
-        <h1>TESTING TESTING TESTING RUN?</h1>
+        <h1>CAN I RUN?</h1>
         <h2>Learn a little bit about your computer's hardware while also
             seeing if your Windows PC can run any game on Steam.
         </h2>
