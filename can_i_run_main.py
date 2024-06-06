@@ -16,7 +16,9 @@ def frontpage():
 def processor():
     global specs_form_data
     specs_form_data = {}
+    print("before for loop")
     for data in request.forms.items():
+        print("inside for loop")
         # This for loop allows us to take our POSTed data and put it into a global dictionary that we
         # can access anywhere in this program.
         specs_form_data[data[0]] = data[1]  
