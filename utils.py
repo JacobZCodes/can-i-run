@@ -75,6 +75,7 @@ def find_clock_speed_plus_core_count(processor_specs_dictionary):
 
     r = requests.get(link)
     soup = bs4.BeautifulSoup(r.text,'lxml')
+    print(soup.find_all('td'))
     for tag in soup.find_all('td'):
         """This for-loop parses through techpowerup.com's HTML and utilizes BeautifulSoup
         to yank the clock speed and core count of the user's processor."""
