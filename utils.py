@@ -123,6 +123,7 @@ def create_dictionary_library():
     return all_games_dic
 
 def return_game_specs(library, game):
+    print(f"Parameter game is {game}")
     """Returns the System Requirements - Minimum: data in the form of a user-friendly dictionary whose
     k-v pairs mimic exactly what is seen on Steam.
     Params: Dict -> All-games dictionary
@@ -132,22 +133,32 @@ def return_game_specs(library, game):
         that matches the parameter game that went into the function."""
         try:
             if game == item[1]:
+                print("Game found: {game}")
                 app_id = item[0]
                 break
         except KeyError:
                 continue
+    try:
+        print(f"{item[0]} - {item[1]}")
+    except:
+        print("Nothing found...")
     """Below we make another call to the Steam API at a different endpoint. We need
     to put our newfound appid as a parameter to this URL's query so the Steam API
     knows for which game to fetch us JSON data."""
     lnk = f'https://store.steampowered.com/api/appdetails/?appids={app_id}'
     rr = requests.get(lnk).text
+    print("Request sucess")
     data = json.loads(rr)
+    print("JSON deserialized...")
     #"pc_requirements" is the key we want
     """We are using BeautifulSoup below to parse through the HTML and get at the 
     System Requirements - Minimum: data that's displayed for every Steam game on their storepage."""
     min_specs = data[str(app_id)]['data']['pc_requirements']['minimum']
+    print("1")
     min_soup = bs4.BeautifulSoup(str(min_specs),'lxml')
+    print("2")
     min_soup_tags = min_soup.find_all('li')
+    print(min_soup_tags)
     min_reqs = {}
     for tag in min_soup_tags:
         """Right now, these tags look messy. We want to strip away the actual <li>,<b>,etc. tags and
@@ -164,6 +175,9 @@ def return_game_specs(library, game):
     if 'Storage' not in min_reqs.keys():
         # Some older games have 'Storage' data under 'Hard Disk Space' instead. 
         min_reqs['Storage'] = min_reqs['Hard Disk Space']
+    print(f"Min reqs: f{min_reqs}")
+    for key in min_reqs.keys():
+        print(key)
     return min_reqs
 
 def return_older_game_processor_specs(processor_string):
@@ -224,6 +238,7 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
     whose values are a success and fail dictionary showing where the user succeeded or failed a check.
     Params Dict -> User Specs Dictionary
     Dict -> Game Specs Dictionary"""
+    print("in")
     result_dict = {}
     fail_dict = {}
     success_dict = {}
@@ -236,12 +251,12 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
     os_pattern = re.compile("7|8|10|11")
     user_os = os_pattern.search(user_spec_dictionary['OS'])
     user_os = int(user_os.group())
-    game_os = os_pattern.search(game_spec_dictionary['OS'])
+    game_os = os_pattern.search(game_spec_dictionary['OS *'])
     game_os = int(game_os.group())
     if user_os >= game_os:
-        success_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS']}
+        success_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS *']}
     else:
-        fail_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS']}
+        fail_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS *']}
 
     
     user_memory = int(re.sub('\D','', user_spec_dictionary['Memory']))
@@ -281,7 +296,7 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
         fail_dict['DirectX']={'User': user_spec_dictionary['DirectX'], 'Game': game_spec_dictionary['DirectX']}
 
     result_dict = {'Fail': fail_dict, 'Success': success_dict}
-
+    print("Executed succesfully")
     return result_dict
     # Now we want to return a result dictionary that has both a success and fail dictionary as values (changed
     # from returning just a fail dictionray)

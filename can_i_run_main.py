@@ -1,5 +1,4 @@
 from bottle import route, run, template, get, post, request, static_file, error, response, redirect, error, abort, Bottle
-from texting import send_text
 import os
 import requests
 import utils
@@ -18,6 +17,7 @@ def processor():
     specs_form_data = {}
     print("before for loop")
     for data in request.forms.items():
+        print(f"Of type {type(request.forms.items())}")
         print("inside for loop")
         # This for loop allows us to take our POSTed data and put it into a global dictionary that we
         # can access anywhere in this program.
@@ -43,11 +43,12 @@ def result(utils_find_clock_speed_plus_core_count=utils.find_clock_speed_plus_co
     global specs_form_data
     global specs_result_dict
     global processor_specs_result_dict
-    game_id = utils_find_app_id(utils_create_dictionary_library(),request.forms.get('game'))
-    try:
-        specs_result_dict = utils_compare_specs(specs_form_data,utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game')))
-    except:
-        abort(400)
+    # game_id = utils_find_app_id(utils_create_dictionary_library(),request.forms.get('game'))
+    # try:
+    specs_result_dict = utils_compare_specs(specs_form_data,utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game')))
+    # except:
+    #     print("aborting!")
+    #     abort(400)
     game_spec_dictionary = utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game'))
     processor_specs_result_dict = utils_compare_processor_specs(utils_find_clock_speed_plus_core_count,processor_form_data,utils_return_processor_specs(game_spec_dictionary['Processor']))
     global game
@@ -203,5 +204,5 @@ def error_400(error):
     return template("errorgamenotfound.tpl")
 if os.environ.get('APP_LOCATION') == 'heroku':
     run(app,host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-else:
+if __name__ == "__main__":
     run(app,host='localhost', port=8080, debug=True)
