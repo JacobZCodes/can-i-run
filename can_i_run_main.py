@@ -1,5 +1,6 @@
 from bottle import route, run, template, get, post, request, static_file, error, response, redirect, error, abort, Bottle
 import os
+import bs4
 import requests
 import utils
 # t
@@ -15,10 +16,13 @@ def frontpage():
 def processor():
     global specs_form_data
     specs_form_data = {}
-    print("before for loop")
+    # link = f"https://www.techpowerup.com/cpu-specs/?ajaxsrch=Core%20{processor_specs_dictionary['Brand Modifier']}-{processor_specs_dictionary['Generation']}{processor_specs_dictionary['SKU']}{processor_specs_dictionary['Suffix']}"
+
+    # r = requests.get(link)
+    # soup = bs4.BeautifulSoup(r.text,'lxml')
+    # print(soup.find_all('td'))
+    # for tag in soup.find_all('td'):
     for data in request.forms.items():
-        print(f"Of type {type(request.forms.items())}")
-        print("inside for loop")
         # This for loop allows us to take our POSTed data and put it into a global dictionary that we
         # can access anywhere in this program.
         specs_form_data[data[0]] = data[1]  
@@ -26,13 +30,26 @@ def processor():
 
 @app.route('/game', method=['POST'])
 def game():
+    print("processor page")
     global specs_form_data
     global processor_form_data
     processor_form_data = {}
+    print("Printing processor info")
+    proc_link = f"https://www.techpowerup.com/cpu-specs/?ajaxsrch=Core%20"
     for data in request.forms.items():
+        print(data)
         # This for loop allows us to take our POSTed data and put it into a global dictionary that we
         # can access anywhere in this program.
         processor_form_data[data[0]] = data[1]
+        # Construct our API link to call to check and make sure that this user's processor exists.
+        if data[0] == "Brand Modifier":
+            proc_link+= data[1] + "-"
+        else:
+            proc_link+= data[1]
+    r = requests.get(proc_link)
+    print(repr(r.text))
+    if r.text == "Nothing found.\n":
+        return template('fake_processor.tpl')
     return template('game.tpl')
 
 @app.route('/result', method=['POST'])
@@ -46,9 +63,8 @@ def result(utils_find_clock_speed_plus_core_count=utils.find_clock_speed_plus_co
     # game_id = utils_find_app_id(utils_create_dictionary_library(),request.forms.get('game'))
     # try:
     specs_result_dict = utils_compare_specs(specs_form_data,utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game')))
-    # except:
-    #     print("aborting!")
-    #     abort(400)
+    if specs_result_dict == -1:
+        return template("fake_game.tpl")
     game_spec_dictionary = utils_return_game_specs(utils_create_dictionary_library(),request.forms.get('game'))
     processor_specs_result_dict = utils_compare_processor_specs(utils_find_clock_speed_plus_core_count,processor_form_data,utils_return_processor_specs(game_spec_dictionary['Processor']))
     global game
@@ -206,6 +222,6 @@ def error_400(error):
 # print(os.environ)
 # if os.environ.get('APP_LOCATION') == 'heroku':
 #     print("cash money")
-run(app,host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-# if __name__ == "__main__":
-#     run(app,host='localhost', port=8080, debug=True)
+# run(app,host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+if __name__ == "__main__":
+    run(app,host='localhost', port=8080, debug=True)

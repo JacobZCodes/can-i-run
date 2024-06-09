@@ -1,3 +1,4 @@
+from bottle import route, run, template, get, post, request, static_file, error, response, redirect, error, abort, Bottle
 import requests
 import re 
 import json
@@ -71,6 +72,10 @@ def find_clock_speed_plus_core_count(processor_specs_dictionary):
     and pull the user's processor's clock speed and core count.
     Params: Processor_Specs_Dictionary -> Dictionary"""
 
+    print("User's processor specs:")
+    for value in processor_specs_dictionary.values():
+        print(value)
+
     link = f"https://www.techpowerup.com/cpu-specs/?ajaxsrch=Core%20{processor_specs_dictionary['Brand Modifier']}-{processor_specs_dictionary['Generation']}{processor_specs_dictionary['SKU']}{processor_specs_dictionary['Suffix']}"
 
     r = requests.get(link)
@@ -139,10 +144,9 @@ def return_game_specs(library, game):
                 break
         except KeyError:
                 continue
-    try:
-        print(f"{item[0]} - {item[1]}")
-    except:
-        print("Nothing found...")
+    # Game not found
+    if game != item[1]:
+        return -1
     """Below we make another call to the Steam API at a different endpoint. We need
     to put our newfound appid as a parameter to this URL's query so the Steam API
     knows for which game to fetch us JSON data."""
@@ -239,7 +243,11 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
     whose values are a success and fail dictionary showing where the user succeeded or failed a check.
     Params Dict -> User Specs Dictionary
     Dict -> Game Specs Dictionary"""
-    print("in")
+
+    # If game_spec_dictionary is -1, then we couldn't find the game
+    if game_spec_dictionary == -1:
+        return -1
+    print(f"Game spec dictionary is: {game_spec_dictionary}")
     result_dict = {}
     fail_dict = {}
     success_dict = {}
@@ -252,12 +260,22 @@ def compare_specs(user_spec_dictionary,game_spec_dictionary):
     os_pattern = re.compile("7|8|10|11")
     user_os = os_pattern.search(user_spec_dictionary['OS'])
     user_os = int(user_os.group())
-    game_os = os_pattern.search(game_spec_dictionary['OS *'])
+    try:
+        game_os = os_pattern.search(game_spec_dictionary['OS *'])
+    except:
+        game_os = os_pattern.search(game_spec_dictionary['OS'])
     game_os = int(game_os.group())
     if user_os >= game_os:
-        success_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS *']}
+        try:
+            success_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS *']}
+        except:
+            success_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS']}
     else:
-        fail_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS *']}
+        try:
+            fail_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS *']}
+        except:
+            fail_dict['OS']={'User': user_spec_dictionary['OS'], 'Game': game_spec_dictionary['OS']}
+
 
     
     user_memory = int(re.sub('\D','', user_spec_dictionary['Memory']))
