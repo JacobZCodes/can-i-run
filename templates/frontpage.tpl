@@ -3,16 +3,18 @@
     <head>
         <meta charset="utf-8">
         <title>CanIRun!</title>
-        <link href="./static/frontpage_style.css" type="text/css" rel="stylesheet">
-        <link href="./static/favicon-16x16.png" rel="icon">
-        <style>
-            @font-face {
-            font-family: rapidfinger101;
-            src: url("./static/RapidFinger101-W9RV.ttf")
-            }
-        </style>   
+        <!--<link href
+            rel="stylesheet"
+            type="text/css"
+            href="{{ url_for('static', filename='tailwind.css')}}" -->
+    <style>
+        @font-face {
+        font-family: rapidfinger101;
+        src: url("./static/RapidFinger101-W9RV.ttf")
+        }
+    </style>   
     </head>
-    <body>
+    <!--<body>
         <h1>CAN I RUN?</h1>
         <h2>Learn a little bit about your computer's hardware while also
             seeing if your Windows PC can run any game on Steam.
@@ -62,5 +64,11 @@
             <option value="300">
             <option value="400">
         </datalist>
+    </body>-->
+    <body class="h-screen w-screen flex flex-col justify-center items-center bg-orange-300">
+        <h1 class="text-6xl"> TailWindPie</h1>
+        <p> EZ PZ</p>
+        <a href="#" class="border-b border-black">Visit github</a>
     </body>
+
 </html>
