@@ -202,7 +202,10 @@ def error_500(error):
 @app.error(400)
 def error_400(error):
     return template("errorgamenotfound.tpl")
-if os.environ.get('APP_LOCATION') == 'heroku':
-    run(app,host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-if __name__ == "__main__":
-    run(app,host='localhost', port=8080, debug=True)
+
+# print(os.environ)
+# if os.environ.get('APP_LOCATION') == 'heroku':
+#     print("cash money")
+run(app,host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+# if __name__ == "__main__":
+#     run(app,host='localhost', port=8080, debug=True)
